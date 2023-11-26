@@ -8,7 +8,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({link, text}) => {
     return (
         <div>
-            <div className="button">
+            <div className="py-5 px-10 bg-red-800 rounded-md text-center">
                 <a href={link} >{text}</a>
             </div>
         </div>
