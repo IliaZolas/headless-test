@@ -5,9 +5,11 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb'
 import { webpackBundler } from '@payloadcms/bundler-webpack'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import { buildConfig } from 'payload/config'
+import cloudinaryPlugin from "payload-cloudinary-plugin/dist/plugins";
 
 import Users from './collections/Users'
 import { Books } from './collections/Books'
+import { Media } from './collections/Media'
 
 export default buildConfig({
   admin: {
@@ -17,7 +19,8 @@ export default buildConfig({
   editor: slateEditor({}),
   collections: [
     Books,
-    Users
+    Users,
+    Media
   ],
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
@@ -25,7 +28,7 @@ export default buildConfig({
   graphQL: {
     schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
   },
-  plugins: [payloadCloud()],
+  plugins: [cloudinaryPlugin()],
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
   }),

@@ -5,14 +5,20 @@ export const Books: CollectionConfig = {
     upload: true,
     fields: [
         {
-            name: 'title',
-            type: 'text',
-            required: true,
+        name: 'title',
+        type: 'text',
+        required: true,
         },
         {
-            name: 'description',
-            type: 'textarea',
-            required: true,
+        name: 'description',
+        type: 'richText',
+        required: true,
+        },
+        {
+        name: 'user',
+        type: 'relationship',
+        relationTo: 'users',
+        required: true,
         },
     ],
-}
+};
